@@ -8,6 +8,17 @@ function checkAnswers(){
   let index = 0;
   let score = 0;
   const formData = new FormData(formElement);
+  let answerEntries = [];
+
+  for (var entry of formData.values()){
+    answerEntries.push(entry);
+  }
+
+  // to check if atleast one question has been attempted by the user
+  if (answerEntries.length === 0){
+    alert('Hey! please attempt answering few questions in the quiz :)');
+  }
+
   for (var entry of formData.values()){
     if (entry === correctAnswers[index]){
       score += 1;

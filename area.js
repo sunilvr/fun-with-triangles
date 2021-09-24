@@ -3,14 +3,19 @@ let heightInput = document.querySelector("#height-input");
 const calculateButton = document.querySelector("#calculate-button");
 const output = document.querySelector("#output");
 
+function areaOfTriangle(base, height){
+  return 0.5 * base * height;
+}
+
 function calculateArea(){
-  baseInput = Number(document.querySelector("#base-input").value);
-  heightInput = Number(document.querySelector("#height-input").value);
-  
-  if (baseInput <=0 || heightInput <= 0){
-    output.innerText = "Error! Base/height of a Triangle should be a positive number";
+  if (!baseInput.value || !heightInput.value){
+    alert('Please fill both the input fields');
+  }
+  else if (baseInput.value <= 0 || heightInput.value <= 0){
+    output.innerText = "Error! Base/height of a Triangle should always be > 0";
   }else{
-    output.innerText = "The area of triangle is " + 0.5 * baseInput * heightInput + " sq.cm";
+    let area = areaOfTriangle(Number(baseInput.value), Number(heightInput.value))
+    output.innerText = "The area of triangle is " + area.toFixed(1) + " sq.cm";
   }
 }
 

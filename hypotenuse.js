@@ -8,14 +8,14 @@ function sumOfSquares(base, height){
 }
 
 function calculateHypotenuse(){
-  baseInput = Number(document.querySelector("#base-input").value);
-  heightInput = Number(document.querySelector("#height-input").value);
-  
-  if (baseInput <=0 || heightInput <= 0){
-    output.innerText = "Error! Base/height of a Triangle should be a positive number";
+  if (!baseInput.value || !heightInput.value){
+    alert('Please fill both the input fields');
+  }
+  else if (baseInput.value <= 0 || heightInput.value <= 0){
+    output.innerText = "Error! Base/height of a Triangle should always be > 0";
   }else{
-    let sumSquares = sumOfSquares(baseInput, heightInput);
-    output.innerText = "The length of hypotenuse is " + Math.sqrt(sumSquares);
+    let sumSquares = sumOfSquares(Number(baseInput.value), Number(heightInput.value));
+    output.innerText = "The length of hypotenuse is " + Math.sqrt(sumSquares).toFixed(1);
   }
 }
 
